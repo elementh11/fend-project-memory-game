@@ -1,7 +1,24 @@
 /*
  * Create a list that holds all of your cards
  */
-
+ let cardsList = [
+   "diamond",
+   "diamond",
+   "paper-plane-o",
+   "paper-plane-o",
+   "anchor",
+   "anchor",
+   "bolt",
+   "bolt",
+   "cube",
+   "cube",
+   "leaf",
+   "leaf",
+   "bomb",
+   "bomb",
+   "bicycle",
+   "bicycle"
+ ];
 
 /*
  * Display the cards on the page
@@ -9,6 +26,13 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+let shuffledCards = shuffle(cardsList);
+function shuffleCards() {
+   for (let i = 0; i < 16; i++) {
+       $(".deck").append($('<li class="card"><i class="fa fa-' + shuffledCards[i] + '"></i></li>'))
+   };
+}
+shuffleCards();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
