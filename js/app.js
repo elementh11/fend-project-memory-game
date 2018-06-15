@@ -20,6 +20,9 @@
    "bicycle"
  ];
 
+ let openCardsList = [];
+ let moves = 0;
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -49,7 +52,6 @@ function shuffle(array) {
     return array;
 }
 
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -60,3 +62,62 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+function startGame() {
+  addCardListener();
+}
+
+
+
+function addCardListener() {
+  $(".card").on("click", function() {
+    const myCard=$(this);
+    displayCard(myCard);
+    addCardToList(myCard);
+
+    if (openCardsList.length ===2) {
+        if (openCardsList[0][0].firstChild.className === openCardsList[1][0].firstChild.className) {
+          lockCard();
+          openCardsList=[];
+        } else {
+            turnOffClick();
+            setTimeout(function () {
+              turnOnClick();
+              hideCard();
+            }, 500);
+            openCardsList=[];
+        };
+        incrementMoves();
+    };
+  });
+}
+
+
+
+
+startGame();
+
+function displayCard(myCard) {
+  myCard.addClass("open show");
+}
+function hideCard() {
+  $('.deck').find('.open').removeClass('open show');
+}
+function addCardToList(myCard) {
+  openCardsList.push(myCard);
+}
+function lockCard() {
+  $('.deck').find('.open').addClass('match');
+}
+
+
+function turnOffClick() {
+  $(".card").addClass("noclick");
+}
+function turnOnClick() {
+  $(".card").removeClass("noclick");
+}
+function incrementMoves() {
+  moves++;
+  $('.moves').text(`${moves}`);
+}
