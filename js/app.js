@@ -22,6 +22,8 @@
 
  let openCardsList = [];
  let moves = 0;
+ let matches = 0;
+ let rating = 3;
 
 /*
  * Display the cards on the page
@@ -63,7 +65,7 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-function startGame() {
+function playGame() {
   addCardListener();
 }
 
@@ -78,6 +80,7 @@ function addCardListener() {
     if (openCardsList.length ===2) {
         if (openCardsList[0][0].firstChild.className === openCardsList[1][0].firstChild.className) {
           lockCard();
+          matches++;
           openCardsList=[];
         } else {
             turnOffClick();
@@ -88,14 +91,20 @@ function addCardListener() {
             openCardsList=[];
         };
         incrementMoves();
+        starScore();
     };
+    checkScore();
   });
 }
 
 
 
 
-startGame();
+playGame();
+$(".restart").on("click", function() {
+  playGame(location.reload());
+});
+
 
 function displayCard(myCard) {
   myCard.addClass("open show");
@@ -109,8 +118,6 @@ function addCardToList(myCard) {
 function lockCard() {
   $('.deck').find('.open').addClass('match');
 }
-
-
 function turnOffClick() {
   $(".card").addClass("noclick");
 }
@@ -120,4 +127,26 @@ function turnOnClick() {
 function incrementMoves() {
   moves++;
   $('.moves').text(`${moves}`);
+}
+function checkScore() {
+  if (matches === 8) {
+    $(".modal").css("display", "flex");
+    $(".button").on("click", function() {
+      playGame(location.reload())});
+    $(".close").on("click", function() {
+      $(".modal").css("display", "none");
+      $('.deck .card').addClass("noclick");
+      });
+  }
+}
+function starScore() {
+  if (moves >= 14) {
+    $('.fa-star').eq(1).css("display", "none");
+    rating = 2;
+  }
+  if (moves >= 18) {
+    $('.fa-star').eq(2).css("display", "none");
+    rating = 1;
+  };
+  $('.stars').text(`${rating}`);
 }

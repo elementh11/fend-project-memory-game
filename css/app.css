@@ -111,3 +111,71 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+
+
+/*Source from W3Schools.com*/
+.modal {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  overflow: auto;
+  background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+}
+
+.modal .modal-content {
+  margin: 10%;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3em;
+  width: 70vh;
+  padding: 2%;
+  text-align: center;
+  border: 5px solid #2c3e56;
+  border-radius: 10px;
+  background-color: rgba(46, 61, 73, 0.5);
+}
+
+.stack {
+  display: block;
+}
+
+.close {
+  color: #eee;
+  float: right;
+  font-weight: 400;
+  font-size: 3em;
+  transition: all 1s;
+}
+
+.close:hover,
+.close:focus {
+  color: #237949;
+  text-decoration: none;
+  cursor: pointer;
+  transform: rotateY(180deg);
+}
+
+.button {
+  border: 1px;
+  border-radius: 10px;
+  padding: 20px;
+  font-weight: 700;
+  box-shadow: 0.5px 2px 0 #2e3d49;
+  transition: all 1s;
+}
+
+.button:hover,
+.button:focus {
+  color: #eee;
+  background-color: #237949;
+  text-decoration: none;
+  cursor: pointer;
+}
