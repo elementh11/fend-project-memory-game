@@ -80,7 +80,7 @@ h1 {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
-    animation: matching 1s;
+    animation: matching 0.5s;
 }
 
 .deck .card.noclick {
@@ -93,7 +93,7 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 35rem;
+    width: 25rem;
     margin-bottom: 10px;
 }
 
@@ -140,7 +140,7 @@ h1 {
   margin: 10%;
   justify-content: center;
   align-items: center;
-  font-size: 1.3em;
+  font-size: 1.2em;
   width: 70vh;
   padding: 2%;
   text-align: center;
@@ -193,4 +193,56 @@ h1 {
   50% {
     transform: scale(1.2);
   }
+}
+
+/*responsiveness*/
+
+@media only screen and (max-width: 480px) {
+  .deck {
+    width: 100%;
+    padding: 5px;
+  }
+  .card {
+    max-width: 5.5rem;
+    max-height: 5.5rem;
+  }
+  .score-panel {
+    width: 15rem;
+    font-size: 1.5em;
+  }
+  .score-panel .stars,
+  .restart .timer {
+    font-size: 1.5em;
+    display: inline-block;
+    margin: 0 4px;
+  }
+
+  .modal {
+    align-items: center;
+  }
+  .modal-content {
+    max-width: 300px;
+    height: 500px;
+    font-size: 2.5rem;
+    margin: 5%;
+  }
+  .close {
+    font-size: 1.5em;
+    padding: 0;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 730px) {
+  .deck {
+    width: 33rem;
+    min-height: 35.5rem;
+  }
+  .deck .card {
+    height: 5.82rem;
+    width: 5.82rem;
+  }
+}
+.score-panel .stars .restart .timer {
+  width: 20rem;
+  font-size: 1rem;
 }
