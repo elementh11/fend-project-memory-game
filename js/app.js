@@ -24,6 +24,11 @@
  let moves = 0;
  let matches = 0;
  let rating = 3;
+ let clickCounter = 0;
+ let seconds = 0;
+ let minutes = 0;
+ let elapsedTime = 0;
+
 
 /*
  * Display the cards on the page
@@ -73,6 +78,12 @@ function playGame() {
 
 function addCardListener() {
   $(".card").on("click", function() {
+
+    clickCounter++;
+    if (clickCounter === 1) {
+      timerOn();
+    }
+
     const myCard=$(this);
     displayCard(myCard);
     addCardToList(myCard);
@@ -130,6 +141,7 @@ function incrementMoves() {
 }
 function checkScore() {
   if (matches === 8) {
+    clearInterval(elapsedTime);
     $(".modal").css("display", "flex");
     $(".button").on("click", function() {
       playGame(location.reload())});
@@ -144,9 +156,19 @@ function starScore() {
     $('.fa-star').eq(1).css("display", "none");
     rating = 2;
   }
-  if (moves >= 18) {
+  if (moves >= 20) {
     $('.fa-star').eq(2).css("display", "none");
     rating = 1;
   };
-  $('.stars').text(`${rating}`);
+  $('.rating').text(`${rating}`);
+}
+function timerOn() {
+  elapsedTime = setInterval(function() {
+    $(".timer").text(`${minutes}:${seconds}`);
+    seconds++;
+    if (seconds === 60) {
+      minutes++;
+      seconds = 0;
+    }
+  }, 1000);
 }
