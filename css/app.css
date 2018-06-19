@@ -83,8 +83,11 @@ h1 {
     animation: matching 0.5s;
 }
 
+.nomatch {
+    animation: shake 0.3s;
+}
 .deck .card.noclick {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 /*
@@ -114,135 +117,152 @@ h1 {
     cursor: pointer;
 }
 .timer {
-  margin-left: 25%;
-  display: inline-block;
+    margin-left: 25%;
+    display: inline-block;
 }
 
+/*
+ * Styles for the Modal
+ * some taken from W3Schools.com
+ */
 
-
-/*Source from W3Schools.com*/
 .modal {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  overflow: auto;
-  background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    overflow: auto;
+    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
 }
 
 .modal .modal-content {
-  margin: 10%;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2em;
-  width: 70vh;
-  padding: 2%;
-  text-align: center;
-  border: 5px solid #2c3e56;
-  border-radius: 10px;
-  background-color: rgba(46, 61, 73, 0.5);
+    margin: 10%;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    width: 70vh;
+    padding: 2%;
+    text-align: center;
+    border: 5px solid #2c3e56;
+    border-radius: 10px;
+    background-color: rgba(46, 61, 73, 0.5);
 }
 
 .stack {
-  margin: 0;
+    margin: 0;
 }
 
 .close {
-  color: #eee;
-  float: right;
-  font-weight: 400;
-  font-size: 3em;
-  transition: all 1s;
+    color: #eee;
+    float: right;
+    font-weight: 400;
+    font-size: 3em;
+    transition: all 1s;
 }
 
 .close:hover,
 .close:focus {
-  color: #237949;
-  text-decoration: none;
-  cursor: pointer;
-  transform: rotateY(180deg);
-}
+    color: #237949;
+    text-decoration: none;
+    cursor: pointer;
+    transform: rotateY(180deg);
+  }
 
 .button {
-  border: 1px;
-  border-radius: 10px;
-  padding: 20px;
-  font-weight: 700;
-  box-shadow: 0.5px 2px 0 #2e3d49;
-  transition: all 1s;
+    border: 1px;
+    border-radius: 10px;
+    padding: 20px;
+    font-weight: 700;
+    box-shadow: 0.5px 2px 0 #2e3d49;
+    transition: all 1s;
 }
 
 .button:hover,
 .button:focus {
-  color: #eee;
-  background-color: #237949;
-  text-decoration: none;
-  cursor: pointer;
+   color: #eee;
+   background-color: #237949;
+   text-decoration: none;
+   cursor: pointer;
 }
 
-/* Keyframes */
 @keyframes matching {
-  0% {
-  }
-  50% {
-    transform: scale(1.2);
-  }
+   0% {
+   }
+   50% {
+     transform: scale(1.2);
+   }
 }
 
-/*responsiveness*/
-
-@media only screen and (max-width: 480px) {
-  .deck {
-    width: 100%;
-    padding: 5px;
-  }
-  .card {
-    max-width: 5.5rem;
-    max-height: 5.5rem;
-  }
-  .score-panel {
-    width: 15rem;
-    font-size: 1.5em;
-  }
-  .score-panel .stars,
-  .restart .timer {
-    font-size: 1.5em;
-    display: inline-block;
-    margin: 0 4px;
-  }
-
-  .modal {
-    align-items: center;
-  }
-  .modal-content {
-    max-width: 300px;
-    height: 500px;
-    font-size: 2.5rem;
-    margin: 5%;
-  }
-  .close {
-    font-size: 1.5em;
-    padding: 0;
-  }
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-@media only screen and (min-width: 480px) and (max-width: 730px) {
-  .deck {
-    width: 33rem;
-    min-height: 35.5rem;
-  }
-  .deck .card {
-    height: 5.82rem;
-    width: 5.82rem;
-  }
+/*
+ *Responsiveness
+ */
+
+@media only screen and (max-width: 479px) {
+   .deck {
+     width: 100%;
+     padding: 5px;
+   }
+   .card {
+     max-width: 5.5rem;
+     max-height: 5.5rem;
+   }
+    .score-panel {
+      width: 15rem;
+      font-size: 1.5em;
+    }
+    .score-panel .stars,
+    .restart .timer {
+      font-size: 1.5em;
+      display: inline-block;
+      margin: 0 4px;
+    }
+
+    .modal {
+      align-items: center;
+    }
+    .modal-content {
+      max-width: 300px;
+      height: 500px;
+      font-size: 2.5rem;
+      margin: 5%;
+    }
+    .close {
+      font-size: 1.5em;
+      padding: 0;
+    }
 }
-.score-panel .stars .restart .timer {
-  width: 20rem;
-  font-size: 1rem;
+
+@media only screen and (min-width: 480px) and (max-width: 729px) {
+    .deck {
+      width: 33rem;
+      min-height: 35.5rem;
+    }
+    .deck .card {
+      height: 5.82rem;
+      width: 5.82rem;
+    }
+}
+    .score-panel .stars .restart .timer {
+      width: 20rem;
+      font-size: 1rem;
 }
